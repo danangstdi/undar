@@ -54,7 +54,7 @@ export default function Header() {
     <header>
       <nav className={`${isScrolled && 'border-b bg-white bg-opacity-60 backdrop-blur-md dark:bg-slate-900 dark:bg-opacity-60 dark:border-b-slate-700'} flex fixed z-40 inset-x-0 top-0 p-4 lg:px-8`}>
         <Link href=''>
-          <Image src={Logo} loading='lazy' quality={50} alt='' className='h-9 w-9'/>
+          <Image src={Logo} loading='lazy' quality={50} alt='' className='h-9 w-9 lg:h-11 lg:w-11'/>
         </Link>
         <button type='button' onClick={() => setNavOpen(!navOpen)} className='flex items-center gap-2 ml-5 bg-indigo-50 text-emerald-400 bg-opacity-70 text-xs px-3 py-1 rounded-full group hover:bg-indigo-100 lg:px-5 dark:bg-slate-800 dark:bg-opacity-70'>
             <svg fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none" stroke="none"/><rect height="6" rx="1" width="6" x="4" y="4"/><rect height="6" rx="1" width="6" x="14" y="4"/><rect height="6" rx="1" width="6" x="4" y="14"/><rect height="6" rx="1" width="6" x="14" y="14"/></svg>

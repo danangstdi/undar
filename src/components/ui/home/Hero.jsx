@@ -43,7 +43,7 @@ export default function Hero() {
         </p>
          <Link href='' onClick={handleToast} className="text-xs flex items-center gap-2 py-3 px-8 bg-gradient-to-r from-emerald-400 to-cyan-500 rounded-full text-white shadow-lg group lg:text-sm">
            <RocketTakeoff size={18} className="group-hover:rotate-45 group-hover:mr-3 group-hover:duration-300 group-hover:ease-in-out"/>
-           Hubungi Kami
+           Daftar Sekarang
          </Link>
        </div>
       {/* <figure className="flex justify-center mt-10 h-3/4 lg:h-[82%] lg:mt-0 lg:justify-start lg:ml-36">
