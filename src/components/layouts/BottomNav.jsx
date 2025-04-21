@@ -12,7 +12,7 @@ export default function BottomNav() {
   const handleToast = () => {
     return Swal.fire({
       title: "",
-      text: "Mohon maaf, Web masih dalam tahap pengembangan",
+      text: "Fitur masih dalam tahap pengembangan",
       icon: "warning"
     });
   }
@@ -21,25 +21,25 @@ export default function BottomNav() {
     <nav className='fixed z-30 bottom-nav-animate inset-x-0 bottom-0 h-[3.7rem] border-t bg-white bg-opacity-90 backdrop-blur-md md:hidden dark:bg-slate-900 dark:bg-opacity-90 dark:border-t-slate-700'>
       <ul className="flex items-center justify-between h-full">
         <li className="w-full">
-           <Link href='/' onClick={handleToast} className="text-gray-700 flex flex-col justify-center items-center gap-1 dark:text-slate-100">
+           <Link href='/' className="text-gray-700 flex flex-col justify-center items-center gap-1 dark:text-slate-100">
             <House size={18}/>
-            <p className="text-[.65rem]">Home</p>
+            <p className="text-[.65rem]">Beranda</p>
           </Link>
         </li>
         <li className="w-full">
-           <Link href='' onClick={handleToast} className="text-gray-700 flex flex-col justify-center items-center gap-1 dark:text-slate-100">
+           <a href='https://undar.ac.id/category/berita-2/' target='_blank' className="text-gray-700 flex flex-col justify-center items-center gap-1 dark:text-slate-100">
             <Book size={18}/>
             <p className="text-[.65rem]">Blog</p>
-          </Link>
+          </a>
         </li>
         <li className="w-full">
           <ThemeTogglerBottomNav/>
         </li>
         <li className="w-full">
-           <Link href='' onClick={handleToast} className="text-gray-700 flex flex-col justify-center items-center gap-1 dark:text-slate-100">
+           <a href='https://undar.siakad.net/' target='_blank' className="text-gray-700 flex flex-col justify-center items-center gap-1 dark:text-slate-100">
             <Boxes size={18}/>
-            <p className="text-[.65rem]">Project</p>
-          </Link>
+            <p className="text-[.65rem]">Siakad</p>
+          </a>
         </li>
         <li className="w-full">
            <Link href='' onClick={handleToast} className="text-gray-700 flex flex-col justify-center items-center gap-1 dark:text-slate-100">

@@ -14,7 +14,7 @@ export default function WebDevelopment() {
         </p>
       </div>
       <div className="w-full flex justify-center"> 
-        <button type="button" onClick={() => setShow(!isShow)} className="py-3 px-6 text-sm bg-emerald-600 rounded-full mt-7">
+        <button type="button" onClick={() => setShow(!isShow)} className="py-3 px-6 text-sm text-white bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-full mt-7">
           {isShow ? 'Baca Lebih Sedikit' : 'Baca Selengkapnya'}
         </button>
       </div>

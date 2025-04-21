@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import Logo from '@/../public/img/undar.png'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, ChevronRight, Github, Google, Instagram, Linkedin, Moon, Search, Sun, Whatsapp, X } from 'react-bootstrap-icons'
+import { ArrowRight, ChevronRight, Facebook, Github, Google, Instagram, Linkedin, Moon, Search, Sun, Whatsapp, X, Youtube } from 'react-bootstrap-icons'
 import Swal from 'sweetalert2'
 const ThemeTogglerNav = dynamic( () => {
   return import( '../partials/button/ThemeTogglerNav' );
@@ -17,11 +17,13 @@ const ThemeTogglerHeader = dynamic( () => {
 export default function Header() {
   const [navOpen, setNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [time, setTime] = useState('');
+  const [date, setDate] = useState('');
 
   const handleToast = () => {
       return Swal.fire({
         title: "",
-        text: "Mohon maaf, fitr ini masih dalam tahap pengembangan",
+        text: "Mohon maaf, fitur ini masih dalam tahap pengembangan",
         icon: "warning"
       });
   }
@@ -50,6 +52,30 @@ export default function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+  
+      // Format jam:menit (misalnya 12.22)
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      setTime(`${hours}.${minutes}`);
+  
+      // Format hari, tanggal bulan (misalnya Min, 16 Feb)
+      const days = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+      const day = days[now.getDay()];
+      const dateNum = now.getDate();
+      const month = months[now.getMonth()];
+      setDate(`${day}, ${dateNum} ${month}`);
+    };
+  
+    updateTime();
+    const interval = setInterval(updateTime, 10000); // update setiap 10 detik
+  
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <header>
       <nav className={`${isScrolled && 'border-b bg-white bg-opacity-60 backdrop-blur-md dark:bg-slate-900 dark:bg-opacity-60 dark:border-b-slate-700'} flex fixed z-40 inset-x-0 top-0 p-4 lg:px-8`}>
@@ -65,23 +91,18 @@ export default function Header() {
           <ul className='hidden md:flex md:items-center md:gap-10 md:text-xs dark:text-slate-100'>
             <li>
               <Link href='/' className='hover:text-emerald-400'>
-                Home
+                Beranda
               </Link>
             </li>
             <li>
-              <Link href='' className='hover:text-emerald-400'>
-                Project
-              </Link>
+              <a href='https://undar.siakad.net/' target='_blank' className='hover:text-emerald-400'>
+                Siakad
+              </a>
             </li>
             <li>
-              <Link href='/blog' className='hover:text-emerald-400'>
+              <a href='https://undar.ac.id/category/berita-2/' target='_blank' className='hover:text-emerald-400'>
                 Blog
-              </Link>
-            </li>
-            <li>
-              <Link href='' className='hover:text-emerald-400'>
-                Forum
-              </Link>
+              </a>
             </li>
           </ul>
           <hr className='hidden lg:h-full lg:border lg:block'/>
@@ -100,9 +121,9 @@ export default function Header() {
       <div id='navbar-open' className='hidden'>
         <div className='fixed z-40 overflow-y-scroll inset-0 bg-slate-300 bg-opacity-40 backdrop-blur-sm p-6 dark:bg-slate-800 dark:bg-opacity-40'>
           <section className='flex justify-between text-gray-700 dark:text-slate-100'>
-            <div className='flex flex-col items-center nav-list-item-1'>
-              <p className='text-3xl lg:text-5xl'>12.22</p>
-              <p className='text-xs lg:text-lg'>Min, 16 Feb</p>
+            <div className='flex flex-col nav-list-item-1'>
+              <p className='text-3xl lg:text-5xl'>{time}</p>
+              <p className='text-xs lg:text-lg'>{date}</p>
             </div>
             <button type='button' onClick={() => setNavOpen(!navOpen)} className='nav-list-item-1 bg-slate-100 bg-opacity-50 backdrop-blur-sm h-fit p-1 ml-auto rounded-md hover:bg-slate-300 dark:bg-slate-600 dark:bg-opacity-50 dark:hover:bg-slate-500'>
               <X size={25} className='text-gray-700 dark:text-slate-100'/>
@@ -117,25 +138,25 @@ export default function Header() {
           </section>
 
           <section className='mt-10'>
-            <h5 className='font-semibold nav-list-item-4 dark:text-slate-100'>Socials</h5>
+            <h5 className='font-semibold nav-list-item-4 dark:text-slate-100'>Links</h5>
             <div className='grid grid-cols-2 gap-3 mt-4 nav-list-item-5 md:grid-cols-4 lg:grid-cols-6'>
               <a href='https://github.com/danangstdi' target='_blank' className='bg-slate-50 text-gray-700 bg-opacity-60 rounded-lg shadow-sm flex flex-col justify-between w-full h-32 p-5 hover:border hover:border-cyan-400 hover:duration-200 hover:text-cyan-400 dark:text-slate-100 dark:bg-slate-700 dark:bg-opacity-60 hover:dark:text-cyan-400'>
                 <Github size={20}/>
                 <p className='text-sm'>Github</p>
               </a>
-              <a href="mailto:danangsetiadi2003@gmail.com" target='_blank' className='bg-slate-50 text-gray-700 bg-opacity-60 rounded-lg shadow-sm flex flex-col justify-between w-full h-32 p-5 hover:border hover:border-cyan-400 hover:duration-200 hover:text-cyan-400 dark:text-slate-100 dark:bg-slate-700 dark:bg-opacity-60 hover:dark:text-cyan-400'>
-                <Google size={20}/>
-                <p className='text-sm'>Email</p>
-              </a>
-              <a href="https://www.linkedin.com/in/danang-setiadi-75a176262/" target='_blank' className='bg-slate-50 text-gray-700 bg-opacity-60 rounded-lg shadow-sm flex flex-col justify-between w-full h-32 p-5 hover:border hover:border-cyan-400 hover:duration-200 hover:text-cyan-400 dark:text-slate-100 dark:bg-slate-700 dark:bg-opacity-60 hover:dark:text-cyan-400'>
-                <Linkedin size={20}/>
-                <p className='text-sm'>Linkedin</p>
+              <a href="https://www.facebook.com/undarkujaya/?locale=id_ID" target='_blank' className='bg-slate-50 text-gray-700 bg-opacity-60 rounded-lg shadow-sm flex flex-col justify-between w-full h-32 p-5 hover:border hover:border-cyan-400 hover:duration-200 hover:text-cyan-400 dark:text-slate-100 dark:bg-slate-700 dark:bg-opacity-60 hover:dark:text-cyan-400'>
+                <Facebook size={20}/>
+                <p className='text-sm'>Facebook</p>
               </a>
               <a href="https://www.instagram.com/danangstd_/" target='_blank' className='bg-slate-50 text-gray-700 bg-opacity-60 rounded-lg shadow-sm flex flex-col justify-between w-full h-32 p-5 hover:border hover:border-cyan-400 hover:duration-200 hover:text-cyan-400 dark:text-slate-100 dark:bg-slate-700 dark:bg-opacity-60 hover:dark:text-cyan-400'>
                 <Instagram size={20}/>
                 <p className='text-sm'>Instagram</p>
               </a>
-              <a href="https://wa.me/6285335837454" target='_blank' rel="noopener noreferrer" className='bg-slate-50 text-gray-700 bg-opacity-60 rounded-lg shadow-sm flex flex-col justify-between w-full h-32 p-5 hover:border hover:border-cyan-400 hover:duration-200 hover:text-cyan-400 dark:text-slate-100 dark:bg-slate-700 dark:bg-opacity-60 hover:dark:text-cyan-400'>
+              <a href="https://www.youtube.com/@undartv7322/" target='_blank' className='bg-slate-50 text-gray-700 bg-opacity-60 rounded-lg shadow-sm flex flex-col justify-between w-full h-32 p-5 hover:border hover:border-cyan-400 hover:duration-200 hover:text-cyan-400 dark:text-slate-100 dark:bg-slate-700 dark:bg-opacity-60 hover:dark:text-cyan-400'>
+                <Youtube size={20}/>
+                <p className='text-sm'>Youtube</p>
+              </a>
+              <a href="https://wa.me/6285608447665" target='_blank' rel="noopener noreferrer" className='bg-slate-50 text-gray-700 bg-opacity-60 rounded-lg shadow-sm flex flex-col justify-between w-full h-32 p-5 hover:border hover:border-cyan-400 hover:duration-200 hover:text-cyan-400 dark:text-slate-100 dark:bg-slate-700 dark:bg-opacity-60 hover:dark:text-cyan-400'>
                 <Whatsapp size={20}/>
                 <p className='text-sm'>Whatsapp</p>
               </a>
