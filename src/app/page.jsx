@@ -6,6 +6,7 @@ import WebDevelopment from "@/components/ui/home/WebDevelopment";
 import Footer from "@/components/layouts/Footer";
 import Certificate from "@/components/ui/home/Certificate";
 import Header from "@/components/layouts/Header";
+import Video from "@/components/ui/home/Video";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Services/>
         <WebDevelopment/>
         <Certificate/>
+        <Video/>
       </main>
       <BottomNav/>
       <Footer/>
